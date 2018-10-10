@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
     data(){
         return {
@@ -22,11 +24,9 @@ export default {
         }
     },
     methods: {
+        ...mapActions(['addTask']),
         createTask(){
-            if(!this.body){
-                return
-            }
-            this.$emit('taskCreated', this.body)
+            this.addTask(this.body)
             this.body = ''
         }
     }

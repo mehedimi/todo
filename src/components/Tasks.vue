@@ -3,9 +3,9 @@
         <div class="card-header">Tasks</div>
         <div class="card-body">
             <ul class="list-group" v-if="tasks.length">
-                <Task :task="task" :index="index" v-for="(task, index) in tasks" :key="index"/>
+                <Task v-for="(task, index) in tasks" :task="task" :key="index + 1" :index="index"/>
             </ul>
-            <p class="text-center" v-else>No task found!</p>
+            <p v-else class="text-center">No task found!</p>
         </div>
     </div>
 
@@ -13,12 +13,14 @@
 
 <script>
 import Task from './Task'
+import { mapGetters } from 'vuex'
+
 export default {
-    props:[
-        'tasks'
-    ],
     components: {
         Task
+    },
+    computed: {
+        ...mapGetters(['tasks'])
     }
 }
 </script>

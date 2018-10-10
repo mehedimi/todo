@@ -1,9 +1,9 @@
 <template>
     <div class="row">
         <div class="col-md-6 offset-md-3">
-            <CreateTask @taskCreated="addTask"/>
+            <CreateTask/>
             <br>
-            <Tasks :tasks="tasks"/>
+            <Tasks/>
         </div>
     </div>
 </template>
@@ -12,26 +12,8 @@
 import CreateTask from './CreateTask'
 import Tasks from './Tasks'
 export default {
-    data(){
-        return {
-            tasks: []
-        }
-    },
-    mounted(){
-        this.$on('deleteTask', (index) => {
-            this.tasks.splice(index, 1)
-        })
-    },
     components: {
         CreateTask, Tasks
-    },
-    methods: {
-        addTask(task){
-            this.tasks.push({
-                text: task,
-                isDone: false
-            })
-        }
     }
 }
 </script>

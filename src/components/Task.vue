@@ -12,15 +12,15 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
     props: [
         'task',
         'index'
     ],
     methods: {
-        deleteTask(id){
-            this.$parent.$parent.$emit('deleteTask', id)
-        }
+        ...mapActions(['deleteTask'])
     }
 }
 </script>
